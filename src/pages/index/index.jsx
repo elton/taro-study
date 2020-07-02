@@ -1,23 +1,28 @@
+import { View } from '@tarojs/components'
 import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 export default class Index extends Component {
+  state = {
+    msg:'Hello,world!!'
+  }
 
-  componentWillMount () { }
-
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
+  componentDidMount() {
+    console.log("ComponentDidMount")
+    this.setState({
+      msg:"Hello again."
+    })
+  }
+  
+// 当返回true才会调用render()方法，多个state被更新的时候，当必要的时候才调用。以便提升性能
+  shouldComponentUpdate() {
+    
+  }
 
   render () {
     return (
       <View className='index'>
-        <Text>Hello world!</Text>
+        {this.state.msg}
       </View>
     )
   }
